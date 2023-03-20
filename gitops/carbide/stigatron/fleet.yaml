@@ -1,0 +1,14 @@
+defaultNamespace: carbide-stigatron-system
+helm:
+  repo: https://harbor.aws.rancher.lol/chartrepo/carbide
+  chart: stigatron
+  version: 0.1.39
+  values:
+    heimdall2.global.cattle.systemDefaultRegistry: harbor.edge.rancher.lol
+  # releaseName: carbide-charts/stigatron
+  valuesFiles:
+    - values.yaml
+
+dependsOn:
+- name: carbide-gitops-carbide-cis-benchmark-operator
+- name: carbide-gitops-carbide-license

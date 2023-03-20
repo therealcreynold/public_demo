@@ -1,0 +1,6 @@
+defaultNamespace: cis-operator-system
+helm:
+  repo: https://harbor.aws.rancher.lol/chartrepo/rancher
+  chart: rancher-cis-benchmark-crd
+  version: 3.0.0
+  releaseName: cis-benchmark-crd
