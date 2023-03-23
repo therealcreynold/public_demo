@@ -52,4 +52,4 @@ heimdall2:
       # accessMode: "ReadWriteOnce"
 global:
   cattle:
-    systemDefaultRegistry: "harbor.edge.rancher.lol"
+    systemDefaultRegistry: "rgcrprod.azurecr.us"

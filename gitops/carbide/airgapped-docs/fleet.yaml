@@ -1,6 +1,6 @@
 defaultNamespace: carbide-docs-system
 helm:
-  repo: https://harbor.aws.rancher.lol/chartrepo/carbide
+  repo: https://rancherfederal.github.io/carbide-charts
   chart: airgapped-docs
   version: 0.1.40
   # releaseName: carbide-charts/stigatron
