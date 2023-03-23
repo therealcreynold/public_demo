@@ -3,8 +3,8 @@ helm:
   repo: https://rancherfederal.github.io/carbide-charts
   chart: stigatron
   version: 0.1.39
-  values:
-    heimdall2.global.cattle.systemDefaultRegistry:  "rgcrprod.azurecr.us"
+  # values:
+    # heimdall2.global.cattle.systemDefaultRegistry:  "rgcrprod.azurecr.us"
   # releaseName: carbide-charts/stigatron
   valuesFiles:
     - values.yaml
