@@ -8,4 +8,4 @@ helm:
     - values.yaml
 
 dependsOn:
-- name: carbide-public-gitops-carbide-cis-benchmark-crds
+- name: ssf-gitops-carbide-cis-benchmark-crds
