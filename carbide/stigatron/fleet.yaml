@@ -10,5 +10,5 @@ helm:
     - values.yaml
 
 dependsOn:
-- name: ssf-gitops-carbide-cis-benchmark-operator
-- name: ssf-gitops-carbide-license
+- name: carbide-public-carbide-cis-benchmark-operator
+- name: carbide-public-carbide-license
