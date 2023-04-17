@@ -2,7 +2,7 @@ defaultNamespace: carbide-docs-system
 helm:
   repo: https://rancherfederal.github.io/carbide-charts
   chart: airgapped-docs
-  # version: 0.1.44
+  version: 0.1.40
   # releaseName: carbide-charts/stigatron
   valuesFiles:
     - values.yaml
