@@ -1,13 +1,13 @@
 complianceOperator:
   image:
     name: carbide/compliance-operator
-    tag: "0.1.0"
+    tag: "0.1.1"
   imagePullPolicy: Always
   serviceAccountName: stigatron
 heimdallOperator:
   image:
     name: carbide/heimdall-operator
-    tag: "0.1.0"
+    tag: "0.1.1"
   imagePullPolicy: Always
   serviceAccountName: stigatron
   database:
@@ -21,7 +21,7 @@ heimdallOperator:
 hook:
   image:
     name: carbide/stigatron-hook
-    tag: "0.1.0"
+    tag: "0.1.1"
   imagePullPolicy: Always
 rbac:
   roleName: compliance-operator
@@ -37,7 +37,7 @@ heimdall2:
   heimdall:
     image:
       name: carbide/heimdall2
-      tag: "0.1.0"
+      tag: "0.1.1"
   postgres:
     enabled: true
     user: postgres
