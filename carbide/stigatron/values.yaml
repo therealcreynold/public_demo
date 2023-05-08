@@ -35,6 +35,9 @@ heimdall2:
   databaseName: heimdall
   jwtSecret: abcde12345
   heimdall:
+    rcidf: # rancher-cluster-id-finder
+      name: carbide/rcidf
+      tag: "0.1.1"
     image:
       name: carbide/heimdall2
       tag: "0.1.1"
