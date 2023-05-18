@@ -28,19 +28,19 @@ parameters:
   csi.storage.k8s.io/node-stage-secret-name: "longhorn-crypto"
   csi.storage.k8s.io/node-stage-secret-namespace: "longhorn-system"
 ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: longhorn-volv-pvc
-# spec:
-#   accessModes:
-#     - ReadWriteOnce
-#   storageClassName: longhorn-crypto-global
-#   resources:
-#     requests:
-#       storage: 2Gi
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-volv-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn-crypto-global
+  resources:
+    requests:
+      storage: 2Gi
 
-# ---
+---
 # apiVersion: v1
 # kind: Pod
 # metadata:
@@ -60,3 +60,16 @@ parameters:
 #   - name: volv
 #     persistentVolumeClaim:
 #       claimName: longhorn-volv-pvc
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: minio-secret
+  namespace: longhorn-system
+type: Opaque
+data:
+  AWS_ACCESS_KEY_ID: bG9uZ2hvcm4=
+  AWS_ENDPOINTS: aHR0cHM6Ly9zMy5teWxhYi5sb2w6ODQ0NA==
+  AWS_SECRET_ACCESS_KEY: SXdhbnR0b3NocmVkdGhlZ25hcjIwMjAh
+
