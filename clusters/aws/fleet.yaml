@@ -3,6 +3,6 @@ helm:
   repo: https://brooksphilip.github.io/charts/
   chart: cluster-template
   version: 0.0.6
-  # releaseName: cluster-template-prod-green
+  releaseName: cluster-template-prod-green
   valuesFiles:
     - values.yaml
