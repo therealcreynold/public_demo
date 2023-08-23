@@ -7,7 +7,7 @@ cluster:
     cluster_name: green
     location: aws
   name: rke2-aws-prod-green
-kubernetesVersion: v1.24.9+rke2r2
+kubernetesVersion: v1.24.16+rke2r1
 cni: canal
 system_default_registry: rgcrprod.azurecr.us
 monitoring:
