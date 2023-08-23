@@ -55,7 +55,7 @@ nodepools:
   # displayName: control-plane-a
   labels: {}
   taints: {}
-  quantity: 1
+  quantity: 3
   paused: false
   name: control-plane-prod-green-a
   ami: ami-042cd2fd384327f78
@@ -107,7 +107,7 @@ nodepools:
   # displayName: worker-a
   labels: {}
   taints: {}
-  quantity: 4
+  quantity: 3
   paused: false
   name: worker-prod-green-a
   ami: ami-042cd2fd384327f78
@@ -153,107 +153,107 @@ nodepools:
     - systemctl restart systemd-sysctl
     - apt update
   zone: c
-- etcd: false
-  controlplane: false
-  worker: true
-  # displayName: worker-b
-  labels: {}
-  taints: {}
-  quantity: 3
-  paused: false
-  name: worker-prod-green-b
-  ami: ami-042cd2fd384327f78
-  deviceName: /dev/sda1
-  encryptEbsVolume: false
-  endpoint: ""
-  iamInstanceProfile: AWSK8sRole
-  insecureTransport: false
-  instanceType: c5a.xlarge
-  region: us-east-1
-  createSecurityGroup: true
-  securityGroups: []
-  keypairName: ""
-  securityGroupReadonly: false
-  sshKeyContents: ""
-  subnetId: subnet-02637e6c13358a297
-  monitoring: false
-  openPort:
-  - "8080"
-  - "8443"
-  - "443"
-  privateAddressOnly: false
-  requestSpotInstance: false
-  tags: Owner,pbrooks,KeepRunning,true
-  retries: 5
-  rootSize: 120
-  sshUser: ubuntu
-  volumeType: gp2
-  vpcId: vpc-09071602f3f8c5e2f
-  useEbsOptimizedInstance: false
-  usePrivateAddress: true
-  userdata: |
-    #cloud-config
-    write_files:
-    - path: /etc/sysctl.d/60-rke2-cis.conf
-      owner: root
-      content: |
-        vm.panic_on_oom=0
-        vm.overcommit_memory=1
-        kernel.panic=10
-        kernel.panic_on_oops=1
-    runcmd:
-    - systemctl restart systemd-sysctl
-    - apt update
-  zone: c
-- etcd: false
-  controlplane: false
-  worker: true
-  # displayName: worker-c
-  labels: {}
-  taints: {}
-  quantity: 3
-  paused: false
-  name: worker-prod-green-c
-  ami: ami-042cd2fd384327f78
-  deviceName: /dev/sda1
-  encryptEbsVolume: false
-  endpoint: ""
-  iamInstanceProfile: AWSK8sRole
-  insecureTransport: false
-  instanceType: c5a.xlarge
-  region: us-east-1
-  createSecurityGroup: true
-  securityGroups: []
-  keypairName: ""
-  securityGroupReadonly: false
-  sshKeyContents: ""
-  subnetId: subnet-02637e6c13358a297
-  monitoring: false
-  openPort:
-  - "8080"
-  - "8443"
-  - "443"
-  privateAddressOnly: false
-  requestSpotInstance: false
-  tags: Owner,pbrooks,KeepRunning,true
-  retries: 5
-  rootSize: 120
-  sshUser: ubuntu
-  volumeType: gp2
-  vpcId: vpc-09071602f3f8c5e2f
-  useEbsOptimizedInstance: false
-  usePrivateAddress: true
-  userdata: |
-    #cloud-config
-    write_files:
-    - path: /etc/sysctl.d/60-rke2-cis.conf
-      owner: root
-      content: |
-        vm.panic_on_oom=0
-        vm.overcommit_memory=1
-        kernel.panic=10
-        kernel.panic_on_oops=1
-    runcmd:
-    - systemctl restart systemd-sysctl
-    - apt update
-  zone: c
+# - etcd: false
+#   controlplane: false
+#   worker: true
+#   # displayName: worker-b
+#   labels: {}
+#   taints: {}
+#   quantity: 3
+#   paused: false
+#   name: worker-prod-green-b
+#   ami: ami-042cd2fd384327f78
+#   deviceName: /dev/sda1
+#   encryptEbsVolume: false
+#   endpoint: ""
+#   iamInstanceProfile: AWSK8sRole
+#   insecureTransport: false
+#   instanceType: c5a.xlarge
+#   region: us-east-1
+#   createSecurityGroup: true
+#   securityGroups: []
+#   keypairName: ""
+#   securityGroupReadonly: false
+#   sshKeyContents: ""
+#   subnetId: subnet-02637e6c13358a297
+#   monitoring: false
+#   openPort:
+#   - "8080"
+#   - "8443"
+#   - "443"
+#   privateAddressOnly: false
+#   requestSpotInstance: false
+#   tags: Owner,pbrooks,KeepRunning,true
+#   retries: 5
+#   rootSize: 120
+#   sshUser: ubuntu
+#   volumeType: gp2
+#   vpcId: vpc-09071602f3f8c5e2f
+#   useEbsOptimizedInstance: false
+#   usePrivateAddress: true
+#   userdata: |
+#     #cloud-config
+#     write_files:
+#     - path: /etc/sysctl.d/60-rke2-cis.conf
+#       owner: root
+#       content: |
+#         vm.panic_on_oom=0
+#         vm.overcommit_memory=1
+#         kernel.panic=10
+#         kernel.panic_on_oops=1
+#     runcmd:
+#     - systemctl restart systemd-sysctl
+#     - apt update
+#   zone: c
+# - etcd: false
+#   controlplane: false
+#   worker: true
+#   # displayName: worker-c
+#   labels: {}
+#   taints: {}
+#   quantity: 3
+#   paused: false
+#   name: worker-prod-green-c
+#   ami: ami-042cd2fd384327f78
+#   deviceName: /dev/sda1
+#   encryptEbsVolume: false
+#   endpoint: ""
+#   iamInstanceProfile: AWSK8sRole
+#   insecureTransport: false
+#   instanceType: c5a.xlarge
+#   region: us-east-1
+#   createSecurityGroup: true
+#   securityGroups: []
+#   keypairName: ""
+#   securityGroupReadonly: false
+#   sshKeyContents: ""
+#   subnetId: subnet-02637e6c13358a297
+#   monitoring: false
+#   openPort:
+#   - "8080"
+#   - "8443"
+#   - "443"
+#   privateAddressOnly: true
+#   requestSpotInstance: false
+#   tags: Owner,pbrooks,KeepRunning,true
+#   retries: 5
+#   rootSize: 120
+#   sshUser: ubuntu
+#   volumeType: gp2
+#   vpcId: vpc-09071602f3f8c5e2f
+#   useEbsOptimizedInstance: false
+#   usePrivateAddress: true
+#   userdata: |
+#     #cloud-config
+#     write_files:
+#     - path: /etc/sysctl.d/60-rke2-cis.conf
+#       owner: root
+#       content: |
+#         vm.panic_on_oom=0
+#         vm.overcommit_memory=1
+#         kernel.panic=10
+#         kernel.panic_on_oops=1
+#     runcmd:
+#     - systemctl restart systemd-sysctl
+#     - apt update
+#   zone: c
