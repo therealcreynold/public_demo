@@ -77,7 +77,8 @@ nodepools:
   - "8080"
   - "8443"
   - "443"
-  privateAddressOnly: false
+  - "22"
+  privateAddressOnly: true
   requestSpotInstance: false
   tags: Owner,pbrooks,KeepRunning,true
   retries: 5
@@ -129,7 +130,8 @@ nodepools:
   - "8080"
   - "8443"
   - "443"
-  privateAddressOnly: false
+  - "22"
+  privateAddressOnly: true
   requestSpotInstance: false
   tags: Owner,pbrooks,KeepRunning,true
   retries: 5
