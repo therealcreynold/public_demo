@@ -227,7 +227,7 @@ nodepools:
   keypairName: ""
   securityGroupReadonly: false
   sshKeyContents: ""
-  subnetId: subnet-0a2bf7fcf6009f864
+  subnetId: subnet-02637e6c13358a297
   monitoring: false
   openPort:
   - "8080"
@@ -240,7 +240,7 @@ nodepools:
   rootSize: 120
   sshUser: ubuntu
   volumeType: gp2
-  vpcId: subnet-02637e6c13358a297
+  vpcId: vpc-09071602f3f8c5e2f
   useEbsOptimizedInstance: false
   usePrivateAddress: true
   userdata: |
