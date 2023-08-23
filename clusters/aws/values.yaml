@@ -15,7 +15,7 @@ monitoring:
 registries:
   configs:
     rgcrprod.azurecr.us:
-      authConfigSecretName: registryconfig-aut-m4zwc
+      authConfigSecretName: registryconfig-auth-m4zwc
       caBundle: ''
       insecureSkipVerify: false
 rke:
