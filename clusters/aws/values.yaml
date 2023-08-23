@@ -65,7 +65,7 @@ nodepools:
   iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: t3a.xlarge
-  region: us-east-2
+  region: us-east-1
   createSecurityGroup: true
   securityGroups: []
   keypairName: ""
@@ -117,7 +117,7 @@ nodepools:
   iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
-  region: us-east-2
+  region: us-east-1
   createSecurityGroup: true
   securityGroups: []
   keypairName: ""
@@ -169,7 +169,7 @@ nodepools:
   iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
-  region: us-east-2
+  region: us-east-1
   createSecurityGroup: true
   securityGroups: []
   keypairName: ""
@@ -221,7 +221,7 @@ nodepools:
   iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
-  region: us-east-2
+  region: us-east-1
   createSecurityGroup: true
   securityGroups: []
   keypairName: ""
