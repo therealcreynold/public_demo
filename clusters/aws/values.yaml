@@ -58,7 +58,7 @@ nodepools:
   quantity: 1
   paused: false
   name: control-plane-prod-green-a
-  ami: ami-0a695f0d95cefc163
+  ami: ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
@@ -100,7 +100,7 @@ nodepools:
     runcmd:
     - useradd -r -c "etcd user" -s /sbin/nologin -M etcd -U
     - apt update
-  zone: a
+  zone: c
 - etcd: false
   controlplane: false
   worker: true
@@ -110,7 +110,7 @@ nodepools:
   quantity: 4
   paused: false
   name: worker-prod-green-a
-  ami: ami-0a695f0d95cefc163
+  ami: ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
@@ -152,7 +152,7 @@ nodepools:
     runcmd:
     - systemctl restart systemd-sysctl
     - apt update
-  zone: a
+  zone: c
 - etcd: false
   controlplane: false
   worker: true
@@ -162,7 +162,7 @@ nodepools:
   quantity: 3
   paused: false
   name: worker-prod-green-b
-  ami: ami-0a695f0d95cefc163
+  ami: ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
@@ -204,7 +204,7 @@ nodepools:
     runcmd:
     - systemctl restart systemd-sysctl
     - apt update
-  zone: b
+  zone: c
 - etcd: false
   controlplane: false
   worker: true
@@ -214,7 +214,7 @@ nodepools:
   quantity: 3
   paused: false
   name: worker-prod-green-c
-  ami: ami-0a695f0d95cefc163
+  ami: ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
