@@ -62,7 +62,7 @@ nodepools:
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
-  iamInstanceProfile: RancherIAMCloudProvider
+  iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: t3a.xlarge
   region: us-east-2
@@ -114,7 +114,7 @@ nodepools:
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
-  iamInstanceProfile: RancherIAMCloudProvider
+  iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
   region: us-east-2
@@ -166,7 +166,7 @@ nodepools:
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
-  iamInstanceProfile: RancherIAMCloudProvider
+  iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
   region: us-east-2
@@ -218,7 +218,7 @@ nodepools:
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
-  iamInstanceProfile: RancherIAMCloudProvider
+  iamInstanceProfile: AWSK8sRole
   insecureTransport: false
   instanceType: c5a.xlarge
   region: us-east-2
