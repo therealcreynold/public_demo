@@ -1,0 +1,19 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: clusters
+  namespace: fleet-local
+spec:
+  branch: main
+  clientSecretName: auth-trn9k
+  insecureSkipTLSVerify: false
+  paths:
+    - clusters
+  repo: git@github.com:brooksphilip/public_demo.git
+  targets:
+    - clusterSelector:
+        matchExpressions:
+          - key: provider.cattle.io
+            operator: NotIn
+            values:
+              - harvester
