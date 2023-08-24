@@ -1,7 +1,7 @@
 kind: GitRepo
 apiVersion: fleet.cattle.io/v1alpha1
 metadata:
-  name: airgapdocs
+  name: carbide-public
   namespace: fleet-default
 spec:
   repo: git@github.com:brooksphilip/public_demo.git
@@ -10,10 +10,10 @@ spec:
 
   # To target specific clusters, uncomment this block
   targets:
-  - clusterGroup: airgapdocs
+  - clusterGroup: carbide-public
   - clusterSelector:
       matchLabels:
-        airgapdocs: true
+        carbide-public: true
   - clusterSelector:
       matchExpressions:
         - key: provider.cattle.io
@@ -21,5 +21,6 @@ spec:
           values:
             - harvester
 
+
   paths:
-  - "./airgapped-docs"
+  - "./carbide"
