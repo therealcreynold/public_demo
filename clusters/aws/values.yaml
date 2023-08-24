@@ -115,7 +115,7 @@ nodepools:
   quantity: 3
   paused: false
   name: worker-prod-green-a
-  ami: ami-097104a26f5e1c26
+  ami: ami-097104a26f5e1c26a
   #Ubuntu ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
