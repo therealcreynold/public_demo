@@ -14,6 +14,8 @@ diff:
      name: fleet-deployed-cluster1
      operations:
      - {"op": "remove", "path": "/spec/rkeConfig/machinePools"}
+     - {"op": "remove", "path": "/spec/rkeConfig/registries/configs/rgcrprod.azurecr.us"}
+  
 
 
 
