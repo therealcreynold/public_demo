@@ -1,5 +1,5 @@
 cloudprovider: vsphere
-cloudCredentialSecretName: cattle-global-data:vsphere
+cloudCredentialSecretName: cattle-global-data:cc-gtxkt
 cluster:
   annotations: {}
   labels:
@@ -7,13 +7,13 @@ cluster:
     cluster_name: delta
     location: homelab
   name: bigbang-delta
-kubernetesVersion: v1.24.9+rke2r2
+kubernetesVersion: v1.24.16+rke2r2
 cni: canal
 system_default_registry: rgcrprod.azurecr.us
 registries:
   configs:
     rgcrprod.azurecr.us:
-      authConfigSecretName: carbide-registry
+      authConfigSecretName: registryconfig-auth-m4zwc
       caBundle: ''
       insecureSkipVerify: false
 vcenter:
@@ -145,7 +145,7 @@ nodepools:
     - systemctl restart systemd-sysctl
 
   cpuCount: "4"
-  memorySize: "16384"
+  memorySize: "8096"
   diskSize: "40000"
 
   # If you choose to clone from a content library template specify the name of the library

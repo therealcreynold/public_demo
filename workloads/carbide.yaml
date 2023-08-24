@@ -13,13 +13,7 @@ spec:
   - clusterGroup: carbide-public
   - clusterSelector:
       matchLabels:
-        carbide-public: true
-  - clusterSelector:
-      matchExpressions:
-        - key: provider.cattle.io
-          operator: NotIn
-          values:
-            - harvester
+        carbide-public: "true"
 
 
   paths:

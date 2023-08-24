@@ -13,13 +13,7 @@ spec:
   - clusterGroup: airgapdocs
   - clusterSelector:
       matchLabels:
-        airgapdocs: true
-  - clusterSelector:
-      matchExpressions:
-        - key: provider.cattle.io
-          operator: NotIn
-          values:
-            - harvester
+        airgapdocs: "true"
 
   paths:
   - "./airgapped-docs"
