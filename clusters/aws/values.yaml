@@ -6,7 +6,9 @@ cluster:
     environment: prod
     cluster_name: green
     location: aws
-  name: rke2-aws-prod-green
+    carbide-public: true
+    airgapdocs: true
+  name: fleet-deployed-cluster1
 kubernetesVersion: v1.24.16+rke2r1
 cni: canal
 system_default_registry: rgcrprod.azurecr.us
@@ -58,7 +60,8 @@ nodepools:
   quantity: 3
   paused: false
   name: control-plane-prod-green-a
-  ami: ami-042cd2fd384327f78
+  ami: ami-097104a26f5e1c26a
+  #Ubuntu ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
@@ -112,7 +115,8 @@ nodepools:
   quantity: 3
   paused: false
   name: worker-prod-green-a
-  ami: ami-042cd2fd384327f78
+  ami: ami-097104a26f5e1c26
+  #Ubuntu ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
