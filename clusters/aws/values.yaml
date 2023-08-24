@@ -60,8 +60,7 @@ nodepools:
   quantity: 3
   paused: false
   name: control-plane-prod-green-a
-  ami: ami-097104a26f5e1c26a
-  #Ubuntu ami-042cd2fd384327f78
+  ami: ami-042cd2fd384327f78
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
@@ -115,8 +114,8 @@ nodepools:
   quantity: 3
   paused: false
   name: worker-prod-green-a
-  ami: ami-097104a26f5e1c26a
-  #Ubuntu ami-042cd2fd384327f78
+  ami: ami-042cd2fd384327f78
+  #Rocky ami-097104a26f5e1c26a
   deviceName: /dev/sda1
   encryptEbsVolume: false
   endpoint: ""
