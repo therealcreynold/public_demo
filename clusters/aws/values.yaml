@@ -189,7 +189,7 @@ nodepools:
   - "8443"
   - "443"
   - "22"
-  privateAddressOnly: true
+  privateAddressOnly: false
   requestSpotInstance: false
   tags: Owner,pbrooks,KeepRunning,true
   retries: 5
