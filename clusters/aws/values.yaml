@@ -167,7 +167,7 @@ nodepools:
   taints: {}
   quantity: 3
   paused: false
-  name: worker-prod-a
+  name: worker-prod-c
   ami: ami-042cd2fd384327f78
   #Rocky ami-097104a26f5e1c26a
   deviceName: /dev/sda1
