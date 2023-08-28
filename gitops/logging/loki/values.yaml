@@ -1,0 +1,27 @@
+test_pod:
+  image: bats/bats:v1.1.0
+  pullPolicy: IfNotPresent
+
+loki:
+  enabled: true
+  isDefault: true
+  rbac:
+    pspEnabled: true
+  persistence:
+    enabled: true
+    storageClassName: harvester
+    size: 5Gi
+  image:
+    repository: harbor.sienarfleet.systems/grafana/loki
+    tag: 2.6.1
+    pullPolicy: IfNotPresent
+
+  ingress:
+    enabled: true
+    hosts:
+    - host: loki.svc.sienarfleet.systems
+      paths:
+      - /
+
+promtail:
+ enabled: false
