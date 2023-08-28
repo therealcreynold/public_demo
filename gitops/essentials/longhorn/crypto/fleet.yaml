@@ -1,1 +1,4 @@
 defaultNamespace: longhorn-system
+
+dependsOn:
+  - essentials-gitops-essentials-longhorn-longhorn
