@@ -87,7 +87,7 @@ nodepools:
     - systemctl restart systemd-sysctl
 
   cpuCount: "4"
-  diskSize: "40000"
+  diskSize: "20000"
   memorySize: "4096"
   creationType: "template"
 
@@ -125,7 +125,7 @@ nodepools:
 
   labels: {}
   taints: {}
-  quantity: 3
+  quantity: 2
   paused: false
 
   # If you choose creation type clone a name of what you want to clone is required
@@ -147,7 +147,7 @@ nodepools:
 
   cpuCount: "4"
   memorySize: "4096"
-  diskSize: "40000"
+  diskSize: "20000"
   creationType: "template"
 
   # # If you choose to clone from a content library template specify the name of the library
