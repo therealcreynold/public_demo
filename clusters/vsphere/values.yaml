@@ -88,7 +88,7 @@ nodepools:
   cpuCount: "4"
   diskSize: "40000"
   memorySize: "8192"
-  # creationType: "library"
+  creationType: "template"
 
   # # If you choose to clone from a content library template specify the name of the library
   # contentLibrary: "cl"
@@ -100,7 +100,7 @@ nodepools:
   datastore: "/HomeLab/datastore/Synology"
 
   # vSphere folder. This folder must already exist in the datacenter
-  # folder: ""
+  folder: "/HomeLab/vm/Rancher"
 
   # vSphere networks where the virtual machine will be attached
   network: 
@@ -147,6 +147,7 @@ nodepools:
   cpuCount: "4"
   memorySize: "8096"
   diskSize: "40000"
+  creationType: "template"
 
   # # If you choose to clone from a content library template specify the name of the library
   # contentLibrary: "cl"
@@ -158,7 +159,7 @@ nodepools:
   datastore: "/HomeLab/datastore/Synology"
 
   # vSphere folder. This folder must already exist in the datacenter
-  # folder: ""
+  folder: "/HomeLab/vm/Rancher"
 
   # vSphere networks where the virtual machine will be attached
   network: 
