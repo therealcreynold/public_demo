@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cowsay
+  namespace: default
+  labels:
+    app: demo
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - env:
+        - name: COW_COLOR
+          value: pink
+        name: demo
+        image: brooksphilip/rancher-demo-navlink
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cowsay
+  namespace: default
+spec:
+  selector:
+    app: demo
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+
+---
+apiVersion: ui.cattle.io/v1
+kind: NavLink
+metadata:
+  name: rodeo
+spec:
+  target: _blank
+  toService:
+    name: cowsay
+    namespace: default
+    path: /
+    port: '8080'
+    scheme: http

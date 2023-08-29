@@ -10,7 +10,6 @@ spec:
 
   # To target specific clusters, uncomment this block
   targets:
-  - clusterGroup: airgapdocs
   - clusterSelector:
       matchLabels:
         airgapdocs: "true"

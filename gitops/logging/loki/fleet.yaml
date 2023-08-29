@@ -6,3 +6,6 @@ helm:
   releaseName: loki
   valuesFiles:
     - values.yaml
+
+dependsOn:
+  - name: essentials-gitops-essentials-longhorn-longhorn

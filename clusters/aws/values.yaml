@@ -3,7 +3,6 @@ cloudCredentialSecretName: cattle-global-data:cc-8k2qc # aws-comm
 cluster:
   annotations: {}
   labels:
-    environment: prod
     location: aws
     carbide-public: true
     airgapdocs: true
