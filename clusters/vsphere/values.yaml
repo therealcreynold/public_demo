@@ -4,8 +4,9 @@ cluster:
   annotations: {}
   labels:
     environment: bigbang
-    cluster_name: delta
     location: homelab
+    carbide-public: true
+    airgapdocs: true
   name: fleet-vsphere
 kubernetesVersion: v1.24.16+rke2r1
 cni: canal
@@ -57,7 +58,7 @@ kubelet_arg:
 
 # Specify nodepool options. Can add multiple node groups, specify etcd, controlplane and worker roles.
 nodepools:
-- name: cp-bb
+- name: control-vsphere
   etcd: true
   controlplane: true
   worker: false
@@ -87,7 +88,7 @@ nodepools:
 
   cpuCount: "4"
   diskSize: "40000"
-  memorySize: "8192"
+  memorySize: "4096"
   creationType: "template"
 
   # # If you choose to clone from a content library template specify the name of the library
@@ -117,7 +118,7 @@ nodepools:
   sshUserGroup: staff
 
   vcenterPort: 443
-- name: worker-bb
+- name: worker-vsphere
   etcd: false
   controlplane: false
   worker: true
@@ -145,7 +146,7 @@ nodepools:
     - systemctl restart systemd-sysctl
 
   cpuCount: "4"
-  memorySize: "8096"
+  memorySize: "4096"
   diskSize: "40000"
   creationType: "template"
 
