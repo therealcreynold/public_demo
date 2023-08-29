@@ -88,13 +88,13 @@ nodepools:
   cpuCount: "4"
   diskSize: "40000"
   memorySize: "8192"
-  creationType: "library"
+  # creationType: "library"
 
-  # If you choose to clone from a content library template specify the name of the library
-  contentLibrary: "cl"
+  # # If you choose to clone from a content library template specify the name of the library
+  # contentLibrary: "cl"
 
   # vSphere datacenter for virtual machine
-  datacenter: "/HomeLan"
+  datacenter: "/HomeLab"
 
   # vSphere datastore for virtual machine
   datastore: "/HomeLab/datastore/Synology"
@@ -148,11 +148,11 @@ nodepools:
   memorySize: "8096"
   diskSize: "40000"
 
-  # If you choose to clone from a content library template specify the name of the library
-  contentLibrary: "cl"
+  # # If you choose to clone from a content library template specify the name of the library
+  # contentLibrary: "cl"
 
   # vSphere datacenter for virtual machine
-  datacenter: "/HomeLan"
+  datacenter: "/HomeLab"
 
   # vSphere datastore for virtual machine
   datastore: "/HomeLab/datastore/Synology"
