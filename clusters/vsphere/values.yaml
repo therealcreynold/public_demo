@@ -6,7 +6,7 @@ cluster:
     environment: bigbang
     cluster_name: delta
     location: homelab
-  name: fleet-vsphere1
+  name: fleet-vsphere
 kubernetesVersion: v1.24.16+rke2r2
 cni: canal
 system_default_registry: rgcrprod.azurecr.us
@@ -17,7 +17,7 @@ registries:
       caBundle: ''
       insecureSkipVerify: false
 vcenter:
-  host: "10.0.0.5"
+  host: "192.168.1.111"
   skip_tls_verify: true
   datacenters: "HomeLab"
   username: Administrator@vsphere.local
