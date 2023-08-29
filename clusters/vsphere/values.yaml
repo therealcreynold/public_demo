@@ -107,7 +107,7 @@ nodepools:
   - "/HomeLab/network/Server Network"
 
   # vSphere resource pool
-  pool: "/Datacenter/host/Cluster/Resources"
+  pool: "/Datacenter/host/Cluster1/Resources"
 
   # If using a non-B2D image you can specify the ssh port
   sshPort: "22"
@@ -165,7 +165,7 @@ nodepools:
   - "/HomeLab/network/Server Network"
 
   # vSphere resource pool
-  pool: "/Datacenter/host/Cluster/Resources"
+  pool: "/Datacenter/host/Cluster1/Resources"
 
   # If using a non-B2D image you can specify the ssh port
   sshPort: "22"
