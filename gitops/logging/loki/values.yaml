@@ -9,12 +9,12 @@ loki:
     pspEnabled: true
   persistence:
     enabled: true
-    storageClassName: harvester
+    storageClassName: longhorn
     size: 5Gi
-  image:
-    repository: harbor.sienarfleet.systems/grafana/loki
-    tag: 2.6.1
-    pullPolicy: IfNotPresent
+  # image:
+  #   repository: harbor.sienarfleet.systems/grafana/loki
+  #   tag: 2.6.1
+  #   pullPolicy: IfNotPresent
 
   ingress:
     enabled: true
