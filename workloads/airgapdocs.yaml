@@ -10,6 +10,7 @@ spec:
 
   # To target specific clusters, uncomment this block
   targets:
+  - clusterGroup: carbide-public
   - clusterSelector:
       matchLabels:
         airgapdocs: deploy
