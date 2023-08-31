@@ -12,7 +12,7 @@ spec:
   targets:
   - clusterSelector:
       matchLabels:
-        airgapdocs: "true"
+        airgapdocs: deploy
 
   paths:
   - "./airgapped-docs"

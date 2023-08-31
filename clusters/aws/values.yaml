@@ -5,7 +5,7 @@ cluster:
   labels:
     location: aws
     carbide-public: true
-    airgapdocs: true
+    airgapdocs: deploy
   name: fleet-deployed-cluster1
 kubernetesVersion: v1.24.16+rke2r1
 cni: canal
