@@ -7,7 +7,7 @@ cluster:
     carbide-public: true
     airgapdocs: true
   name: fleet-deployed-cluster1
-kubernetesVersion: v1.25.12+rke2r1
+kubernetesVersion: v1.24.16+rke2r1
 cni: canal
 system_default_registry: rgcrprod.azurecr.us
 monitoring:
