@@ -1,0 +1,15 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: logging
+  namespace: fleet-default
+spec:
+  branch: main
+  clientSecretName: auth-27sb9
+  paths:
+    - gitops/logging
+  repo: git@github.com:brooksphilip/public_demo.git
+  targets:
+  - clusterSelector:
+      matchLabels:
+        logging: "true"
