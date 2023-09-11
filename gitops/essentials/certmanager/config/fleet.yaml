@@ -1,4 +1,0 @@
-defaultNamespace: cert-manager
-dependsOn:
-  - name: essentials-gitops-essentials-certmanager-cert-manager
-  
