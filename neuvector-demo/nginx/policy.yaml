@@ -10,6 +10,9 @@ items:
       settings: []
       status: true
     egress:
+    file: []
+    ingress: []
+    process:
     - action: allow
       allow_update: false
       name: pause
