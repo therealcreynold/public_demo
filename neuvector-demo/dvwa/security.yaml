@@ -1,0 +1,183 @@
+apiVersion: v1
+items:
+- apiVersion: neuvector.com/v1
+  kind: NvSecurityRule
+  metadata:
+    name: nv.dvwa-app.dvwa
+    namespace: dvwa
+  spec:
+    dlp:
+      settings:
+      - action: deny
+        name: sensor.creditcard
+      - action: deny
+        name: sensor.ssn
+      status: true
+    egress:
+    - action: allow
+      applications:
+      - DNS
+      name: nv.rke2-coredns-rke2-coredns.kube-system-egress-0
+      ports: any
+      priority: 0
+      selector:
+        comment: ""
+        criteria:
+        - key: service
+          op: =
+          value: rke2-coredns-rke2-coredns.kube-system
+        - key: domain
+          op: =
+          value: kube-system
+        name: nv.rke2-coredns-rke2-coredns.kube-system
+        original_name: ""
+    file: []
+    ingress:
+    - action: allow
+      applications:
+      - HTTP
+      name: nv.dvwa-app.dvwa-ingress-0
+      ports: any
+      priority: 0
+      selector:
+        comment: ""
+        criteria:
+        - key: service
+          op: =
+          value: rke2-ingress-nginx-controller.kube-system
+        - key: domain
+          op: =
+          value: kube-system
+        name: nv.rke2-ingress-nginx-controller.kube-system
+        original_name: ""
+    - action: allow
+      applications:
+      - HTTP
+      name: nv.dvwa-app.dvwa-ingress-1
+      ports: any
+      priority: 0
+      selector:
+        comment: ""
+        criteria: []
+        name: external
+        original_name: ""
+    - action: allow
+      applications:
+      - HTTP
+      name: nv.dvwa-app.dvwa-ingress-2
+      ports: any
+      priority: 0
+      selector:
+        comment: ""
+        criteria:
+        - key: domain
+          op: =
+          value: test
+        - key: service
+          op: =
+          value: nginx.test
+        name: nv.nginx.test
+        original_name: ""
+    process:
+    - action: allow
+      allow_update: false
+      name: apache2
+      path: /usr/sbin/apache2
+    - action: allow
+      allow_update: false
+      name: bash
+      path: /bin/bash
+    - action: allow
+      allow_update: false
+      name: dirname
+      path: /usr/bin/dirname
+    - action: allow
+      allow_update: false
+      name: entrypoint.sh
+      path: /bin/dash
+    - action: allow
+      allow_update: false
+      name: env
+      path: /usr/bin/env
+    - action: allow
+      allow_update: false
+      name: grep
+      path: /bin/grep
+    - action: allow
+      allow_update: false
+      name: head
+      path: /usr/bin/head
+    - action: allow
+      allow_update: false
+      name: mariadb
+      path: /usr/bin/mariadb
+    - action: allow
+      allow_update: false
+      name: mariadbd
+      path: /usr/sbin/mariadbd
+    - action: allow
+      allow_update: false
+      name: mkdir
+      path: /bin/mkdir
+    - action: allow
+      allow_update: false
+      name: pause
+      path: /pause
+    - action: allow
+      allow_update: false
+      name: php
+      path: /usr/local/bin/php
+    - action: allow
+      allow_update: false
+      name: ping
+      path: /bin/ping
+    - action: allow
+      allow_update: false
+      name: rm
+      path: /bin/rm
+    - action: allow
+      allow_update: false
+      name: script
+      path: /usr/bin/script
+    - action: allow
+      allow_update: false
+      name: sed
+      path: /bin/sed
+    - action: allow
+      allow_update: false
+      name: sh
+      path: /bin/dash
+    - action: allow
+      allow_update: false
+      name: sleep
+      path: /bin/sleep
+    process_profile:
+      baseline: basic
+    target:
+      policymode: Monitor
+      selector:
+        comment: ""
+        criteria:
+        - key: service
+          op: =
+          value: dvwa-app.dvwa
+        - key: domain
+          op: =
+          value: dvwa
+        name: nv.dvwa-app.dvwa
+        original_name: ""
+    waf:
+      settings:
+      - action: deny
+        name: demo-sensor
+      - action: deny
+        name: demo-sensor-1
+      - action: deny
+        name: demo-sensor-url-manual
+      - action: deny
+        name: sensor.log4shell
+      - action: deny
+        name: sensor.spring4shell
+      status: true
+kind: List
+metadata: null

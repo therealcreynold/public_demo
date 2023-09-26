@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nmap
+  namespace: default
+  labels:
+    app: nmap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nmap
+  template:
+    metadata:
+      labels:
+        app: nmap
+    spec:
+      containers:
+      - name: nmap
+        image: 	brooksphilip/neuvector-nmap
