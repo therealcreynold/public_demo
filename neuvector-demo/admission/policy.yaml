@@ -1,0 +1,21 @@
+apiVersion: neuvector.com/v1
+kind: NvAdmissionControlSecurityRule
+metadata:
+  name: local
+spec:
+  config:
+    client_mode: service
+    enable: false
+    mode: monitor
+  rules:
+  - action: deny
+    comment: nginx default namespace
+    criteria:
+    - name: image
+      op: containsAny
+      path: image
+      value: library/nginx
+    - name: namespace
+      op: containsAny
+      path: namespace
+      value: default
