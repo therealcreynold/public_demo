@@ -5,7 +5,7 @@ metadata:
 spec:
   config:
     client_mode: service
-    enable: false
+    enable: true
     mode: protect
   rules:
   - action: deny
