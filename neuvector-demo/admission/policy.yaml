@@ -1,7 +1,7 @@
 apiVersion: neuvector.com/v1
 kind: NvAdmissionControlSecurityRule
 metadata:
-  name: fleet-default
+  name: local
 spec:
   config:
     client_mode: service
