@@ -5,11 +5,11 @@ metadata:
   namespace: fleet-local
 spec:
   branch: main
-  clientSecretName: auth-trn9k
+  clientSecretName: gitfleetsshkey
   insecureSkipTLSVerify: false
   paths:
     - clusters
-  repo: git@github.com:brooksphilip/public_demo.git
+  repo: git@github.com:therealcreynold/public_demo.git
   targets:
     - clusterSelector:
         matchExpressions:

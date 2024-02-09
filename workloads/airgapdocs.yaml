@@ -4,9 +4,9 @@ metadata:
   name: airgapdocs
   namespace: fleet-default
 spec:
-  repo: git@github.com:brooksphilip/public_demo.git
+  repo: git@github.com:therealcreynold/public_demo.git
   branch: main
-  clientSecretName: auth-27sb9
+  clientSecretName: gitfleetsshkey
 
   # To target specific clusters, uncomment this block
   targets:

@@ -5,10 +5,10 @@ metadata:
   namespace: fleet-default
 spec:
   branch: main
-  clientSecretName: auth-27sb9
+  clientSecretName: gitfleetsshkey
   paths:
     - gitops/logging
-  repo: git@github.com:brooksphilip/public_demo.git
+  repo: git@github.com:therealcreynold/public_demo.git
   targets:
   - clusterSelector:
       matchLabels:
