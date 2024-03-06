@@ -21,7 +21,7 @@ spec:
   insecureSkipTLSVerify: false
   paths:
 #    - string
-  repo: 'ssh://git@github.com:therealcreynold/public_demo.git'
+  repo: ssh://git@github.com:therealcreynold/public_demo.git
   targets:
     - clusterSelector:
         matchExpressions:
