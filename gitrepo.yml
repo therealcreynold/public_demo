@@ -10,7 +10,7 @@ metadata:
   labels:
     {}
     #  key: string
-  namespace: fleet-local
+  namespace: fleet-default
 spec:
   branch: main
   clientSecretName: gitfleetsshkey
