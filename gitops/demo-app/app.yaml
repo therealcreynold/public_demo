@@ -19,7 +19,7 @@ spec:
       containers:
       - env:
         - name: COW_COLOR
-          value: pink
+          value: blue
         name: demo
         image: brooksphilip/rancher-demo-navlink
         ports:
