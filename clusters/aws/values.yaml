@@ -63,7 +63,7 @@ nodepools:
     region: us-east-1
     createSecurityGroup: false
     securityGroups: ['sg-07218e309080a8209']
-    keypairName: 'creynold-rgs-aws'
+    keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
     subnetId: subnet-03fcb747f40f11e16
@@ -229,7 +229,7 @@ nodepools:
     region: us-east-1
     createSecurityGroup: false
     securityGroups: ['sg-07218e309080a8209']
-    keypairName: 'creynold-rgs-aws'
+    keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
     subnetId: subnet-03fcb747f40f11e16
