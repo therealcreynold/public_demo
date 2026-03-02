@@ -1,6 +1,6 @@
 defaultNamespace: cis-operator-system
 helm:
-  repo: https://harbor.creynold.dev/chartrepo/rancher
+  repo: https://charts.rancher.io
   chart: rancher-cis-benchmark
   # version: 3.0.0
   releaseName: cis-benchmark
