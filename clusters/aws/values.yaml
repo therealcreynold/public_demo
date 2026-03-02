@@ -1,12 +1,12 @@
 cloudprovider: amazonec2
-cloudCredentialSecretName: awsgovcloud 
+cloudCredentialSecretName: awscommercial
 rancher:
   cattle:
-    url: rancher.ceynold.dev
+    url: rancher.creynold.dev
 cluster:
   annotations: {}
-  labels: {fleet-demo: 'true'}
-  name: creynold-dev-aws-govcloud
+  labels: {fleet-demo: 'true', carbide-public: 'true'}
+  name: fleet-downstream-aws
   config:
     systemDefaultRegistry: docker.io
     kubernetesVersion: v1.26.11+rke2r1
@@ -44,18 +44,6 @@ cluster:
       - read-only-port=0
       - authorization-mode=Webhook
       - streaming-connection-idle-timeout=5m
-    registries:
-      enabled: true
-      configs:
-        - name: rgcrprod.azurecr.us
-          authConfigSecretName: carbidecredential
-          caBundle: ''
-          insecureSkipVerify: false
-          tlsSecretName: ''
-#      mirrors:
-#        - name: docker.io
-#          endpoints:
-#            - rgcrprod.azurecr.us
     upgradeStrategy:
       controlPlaneConcurrency: 10%
       controlPlaneDrainOptions:
@@ -64,9 +52,8 @@ cluster:
       workerDrainOptions:
         enabled: false
 
-
 nodepools:
-  - name: control-plane-nodes-dev
+  - name: control-plane-nodes
     etcd: true
     controlplane: true
     worker: true
@@ -74,20 +61,20 @@ nodepools:
     taints: {}
     quantity: 1
     paused: false
-    ami: ami-0ce8fc041db68907c # rhel 9 ami
+    ami: ami-08f362c39d03a4eb5
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: 'creynold-iam-ip' # required: replace with your iam instance profile name
+    iamInstanceProfile: ''
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-gov-west-1
+    region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['creynold-sg'] # required: replace with your security group name
-    keypairName: ''
+    securityGroups: ['sg-07218e309080a8209']
+    keypairName: 'creynold-rgs-aws'
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-0392e5b03c16aa118 # required: replace with your subnet id
+    subnetId: subnet-03fcb747f40f11e16
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -95,9 +82,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 90
-    sshUser: ec2-user
+    sshUser: rocky
     volumeType: gp3
-    vpcId: vpc-0b6941a3bdc1f3fda # required: replace with your vpc id
+    vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userData: |
@@ -114,8 +101,6 @@ nodepools:
       - iscsi-initiator-utils
       - zip
       - zstd
-      ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAuAJDGb9xqrptXNLXQbScfnw409MeRk8ZxQpVCfqtbd9d3qAEnnSefWXoLPhBJgB6HZopPANOa5IR7sTzTem0pzJFzzyH0p+4pm7Pb5VDGJQ2nbgVWNlFpHGYyVp2jnI3CuQaOlyl0sJX8x8P9e1dru2IzhjRXD/DIpSuDbe5hxGgTyK/ZiQjwYfZmxrH88SP42YoFe9xjKP457sRBMVe77vdPv0rg/9FRi60gNI7p2nxWA9B+7NSvmrKYYAw8GABlExOp7IUhLAy22tiLN0XTDP9eETUPdQIWGgtoOtaYh+y+9AWSHR/eNmLcdIdPlLpWwyRLes+0VJIyu6fx4Bgol4WkscPK36VxYrzV5l56cR9HCs0dvkEnx1gfgrUGOC9hyQN7Ak8P8JzfeeRLAKX2SJ3mwtbIfZfv/fvLGBtv+gBgAoZxwtTGXpGwAFdJtL7EdbCV/5sXNg4ppIIOJLNKAIV+hVWw0N716AZkxmWDFjdb5nEySE6d8MTAa8fYhU= rgs-creynold@creynold-rgs.local
       write_files:
       - path: /etc/sysctl.conf
         owner: root
@@ -229,12 +214,12 @@ nodepools:
                               tigera-operator]
       runcmd:
       - sudo sysctl -p
-      - sudo yum install -y https://github.com/rancher/rke2-selinux/releases/download/v0.17.stable.1/rke2-selinux-0.17-1.el9.noarch.rpm 
+      - sudo yum install -y https://github.com/rancher/rke2-selinux/releases/download/v0.17.stable.1/rke2-selinux-0.17-1.el9.noarch.rpm
       - sudo echo -e "[keyfile]\nunmanaged-devices=interface-name:cali*;interface-name:flannel*" > /etc/NetworkManager/conf.d/rke2-canal.conf
       - sudo mkdir -p /etc/rancher/rke2/ /var/lib/rancher/rke2/server/manifests/
       - sudo useradd -r -c "etcd user" -s /sbin/nologin -M etcd -U
       - sudo systemctl stop firewalld; systemctl disable firewalld; systemctl stop nm-cloud-setup; systemctl disable nm-cloud-setup; systemctl stop nm-cloud-setup.timer; systemctl disable nm-cloud-setup.timer
-  - name: worker-nodes-dev
+  - name: worker-nodes
     etcd: false
     controlplane: false
     worker: true
@@ -242,20 +227,20 @@ nodepools:
     taints: {}
     quantity: 2
     paused: false
-    ami: ami-0ce8fc041db68907c #rhel 9 ami
+    ami: ami-08f362c39d03a4eb5
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: 'creynold-iam-ip' # required: replace with your iam instance profile name
+    iamInstanceProfile: ''
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-gov-west-1
+    region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['creynold-sg'] # required: replace with your security group name
-    keypairName: '' # adding key
+    securityGroups: ['sg-07218e309080a8209']
+    keypairName: 'creynold-rgs-aws'
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-0392e5b03c16aa118 # required: replace with your subnet id
+    subnetId: subnet-03fcb747f40f11e16
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -263,9 +248,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 80
-    sshUser: ec2-user
+    sshUser: rocky
     volumeType: gp3
-    vpcId: vpc-0b6941a3bdc1f3fda # required: replace with your vpc id
+    vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userData: |
@@ -282,8 +267,6 @@ nodepools:
       - iscsi-initiator-utils
       - zip
       - zstd
-      ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA26evmemRbhTtjV9szD9SwcFW9VOD38jDuJmyYYdqoqIltDkpUqDa/V1jxLSyrizhOHrlJtUOj790cxrvInaBNP7nHIO+GwC9VH8wFi4KG/TFj3K8SfNZ24QoUY12rLiHR6hRxcT4aUGnqFHGv2WTqsW2sxz03z+W1qeMqWYJOUfkqKKs2jiz42U+0Kp9BxsFBlai/WAXrQsYC8CcpQSRKdggOMQf04CqqhXzt5Q4Cmago+Fr7HcvEnPDAaNcVtfS5DYLERcX2OVgWT3RBWhDIjD8vYCMBBCy2QUrc4ZhKZfkF9aemjnKLfLcbdpMfb+r7NwJsVQSPKcjYAJOckE8RQ== clemenko@clemenko.local
       write_files:
       - path: /etc/sysctl.conf
         owner: root
@@ -320,7 +303,7 @@ nodepools:
           fs.inotify.max_user_watches=1048576
       runcmd:
       - sudo sysctl -p
-      - sudo yum install -y https://github.com/rancher/rke2-selinux/releases/download/v0.17.stable.1/rke2-selinux-0.17-1.el9.noarch.rpm 
+      - sudo yum install -y https://github.com/rancher/rke2-selinux/releases/download/v0.17.stable.1/rke2-selinux-0.17-1.el9.noarch.rpm
       - sudo echo -e "[keyfile]\nunmanaged-devices=interface-name:cali*;interface-name:flannel*" > /etc/NetworkManager/conf.d/rke2-canal.conf
       - sudo mkdir -p /etc/rancher/rke2/
       - sudo systemctl stop firewalld; systemctl disable firewalld; systemctl stop nm-cloud-setup; systemctl disable nm-cloud-setup; systemctl stop nm-cloud-setup.timer; systemctl disable nm-cloud-setup.timer
@@ -330,20 +313,20 @@ addons:
     values:
       global:
         cattle:
-          systemDefaultRegistry: rgcrprod.azurecr.us
+          systemDefaultRegistry: docker.io
   longhorn:
     enabled: false
     values:
       global:
         cattle:
-          systemDefaultRegistry: rgcrprod.azurecr.us
+          systemDefaultRegistry: docker.io
   neuvector:
     enabled: false
     values:
       global:
         cattle:
-          url: https://rancher.ranchers.io
-          systemDefaultRegistry: rgcrprod.azurecr.us
+          url: https://rancher.creynold.dev
+          systemDefaultRegistry: docker.io
       controller:
         ranchersso:
           enabled: true

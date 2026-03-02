@@ -1,0 +1,15 @@
+defaultNamespace: default
+helm:
+  repo: https://brooksphilip.github.io/charts/
+  chart: cluster-template
+  version: 0.0.7
+  valuesFiles:
+    - values.yaml
+diff:
+  comparePatches:
+  - apiVersion: provisioning.cattle.io/v1
+    kind: Cluster
+    namespace: fleet-default
+    name: fleet-downstream-aws
+    operations:
+    - {"op": "remove", "path": "/spec/rkeConfig/machinePools"}

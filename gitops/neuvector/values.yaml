@@ -164,9 +164,9 @@ enforcer:
       key: node-role.kubernetes.io/master
 global:
   cattle:
-    systemDefaultRegistry: harbor.sienarfleet.systems
-    url: https://rancher.deathstar.sienarfleet.systems
-  systemDefaultRegistry: harbor.sienarfleet.systems
+    systemDefaultRegistry: docker.io
+    url: https://rancher.creynold.dev
+  systemDefaultRegistry: docker.io
 k3s:
   enabled: false
   runtimePath: /run/k3s/containerd/containerd.sock
