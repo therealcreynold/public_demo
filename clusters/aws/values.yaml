@@ -1,5 +1,5 @@
 cloudprovider: amazonec2
-cloudCredentialSecretName: awscommercial
+cloudCredentialSecretName: cc-wwh9b
 
 cluster:
   annotations: {}
