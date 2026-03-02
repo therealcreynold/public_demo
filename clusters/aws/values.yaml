@@ -1,56 +1,48 @@
 cloudprovider: amazonec2
 cloudCredentialSecretName: awscommercial
-rancher:
-  cattle:
-    url: rancher.creynold.dev
+
 cluster:
   annotations: {}
   labels: {fleet-demo: 'true', carbide-public: 'true'}
   name: fleet-downstream-aws
-  config:
-    systemDefaultRegistry: docker.io
-    kubernetesVersion: v1.26.11+rke2r1
-    localClusterAuthEndpoint:
-      enabled: false
-    cni: canal
-    docker: false
-    disable_kube_proxy: false
-    etcd_expose_metrics: false
-    profile: cis-1.23
-    selinux: true
-    secrets_encryption: true
-    write_kubeconfig_mode: 0640
-    use_service_account_credentials: true
-    protect_kernel_defaults: true
-    kube_controller_manager_arg:
-      - bind-address=127.0.0.1
-      - use-service-account-credentials=true
-      - tls-min-version=VersionTLS12
-      - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-    kube_scheduler_arg:
-      - tls-min-version=VersionTLS12
-      - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-    kube_apiserver_arg:
-      - tls-min-version=VersionTLS12
-      - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-      - authorization-mode=RBAC,Node
-      - anonymous-auth=false
-      - audit-policy-file=/etc/rancher/rke2/audit-policy.yaml
-      - audit-log-mode=blocking-strict
-      - audit-log-maxage=30
-      - admission-control-config-file=/etc/rancher/rke2/rancher-pss.yaml
-    kubelet_arg:
-      - protect-kernel-defaults=true
-      - read-only-port=0
-      - authorization-mode=Webhook
-      - streaming-connection-idle-timeout=5m
-    upgradeStrategy:
-      controlPlaneConcurrency: 10%
-      controlPlaneDrainOptions:
-        enabled: false
-      workerConcurrency: 10%
-      workerDrainOptions:
-        enabled: false
+
+kubernetesVersion: v1.26.11+rke2r1
+cni: canal
+profile: cis-1.23
+selinux: true
+protect_kernel_defaults: true
+write_kubeconfig_mode: "0640"
+use_service_account_credentials: true
+system_default_registry: docker.io
+
+kube_controller_manager_arg:
+  - bind-address=127.0.0.1
+  - use-service-account-credentials=true
+  - tls-min-version=VersionTLS12
+  - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+kube_scheduler_arg:
+  - tls-min-version=VersionTLS12
+  - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+kube_apiserver_arg:
+  - tls-min-version=VersionTLS12
+  - tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  - authorization-mode=RBAC,Node
+  - anonymous-auth=false
+  - audit-policy-file=/etc/rancher/rke2/audit-policy.yaml
+  - audit-log-mode=blocking-strict
+  - audit-log-maxage=30
+  - admission-control-config-file=/etc/rancher/rke2/rancher-pss.yaml
+kubelet_arg:
+  - protect-kernel-defaults=true
+  - read-only-port=0
+  - authorization-mode=Webhook
+  - streaming-connection-idle-timeout=5m
+
+rke:
+  localClusterAuthEndpoint:
+    enabled: false
+
+registries: {}
 
 nodepools:
   - name: control-plane-nodes
@@ -307,32 +299,6 @@ nodepools:
       - sudo echo -e "[keyfile]\nunmanaged-devices=interface-name:cali*;interface-name:flannel*" > /etc/NetworkManager/conf.d/rke2-canal.conf
       - sudo mkdir -p /etc/rancher/rke2/
       - sudo systemctl stop firewalld; systemctl disable firewalld; systemctl stop nm-cloud-setup; systemctl disable nm-cloud-setup; systemctl stop nm-cloud-setup.timer; systemctl disable nm-cloud-setup.timer
-addons:
-  monitoring:
-    enabled: true
-    values:
-      global:
-        cattle:
-          systemDefaultRegistry: docker.io
-  longhorn:
-    enabled: false
-    values:
-      global:
-        cattle:
-          systemDefaultRegistry: docker.io
-  neuvector:
-    enabled: false
-    values:
-      global:
-        cattle:
-          url: https://rancher.creynold.dev
-          systemDefaultRegistry: docker.io
-      controller:
-        ranchersso:
-          enabled: true
-      k3s:
-        enabled: true
-      manager:
-        svc:
-          type: ClusterIP
-      rbac: true
+
+monitoring:
+  enabled: true
