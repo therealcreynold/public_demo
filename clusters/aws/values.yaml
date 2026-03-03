@@ -217,7 +217,7 @@ nodepools:
     worker: true
     labels: {}
     taints: {}
-    quantity: 2
+    quantity: 0
     paused: false
     ami: ami-08f362c39d03a4eb5
     deviceName: /dev/sda1
