@@ -79,7 +79,7 @@ nodepools:
     vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
-    userData: |
+    userdata: |
       #cloud-config
       packages:
       - iptables
@@ -245,7 +245,7 @@ nodepools:
     vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
-    userData: |
+    userdata: |
       #cloud-config
       packages:
       - iptables
