@@ -62,7 +62,7 @@ nodepools:
     instanceType: t3a.xlarge
     region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['sg-07218e309080a8209']
+    securityGroups: ['new-security-group']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
@@ -228,7 +228,7 @@ nodepools:
     instanceType: t3a.xlarge
     region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['sg-07218e309080a8209']
+    securityGroups: ['new-security-group']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
