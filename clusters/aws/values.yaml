@@ -1,5 +1,5 @@
 cloudprovider: amazonec2
-cloudCredentialSecretName: awsgovcloud
+cloudCredentialSecretName: cattle-global-data:awsgovcloud
 
 cluster:
   annotations: {}
