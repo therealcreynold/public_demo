@@ -53,20 +53,20 @@ nodepools:
     taints: {}
     quantity: 1
     paused: false
-    ami: ami-0ce8fc041db68907c
+    ami: ami-08f362c39d03a4eb5
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: 'creynold-iam-ip'
+    iamInstanceProfile: ''
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-gov-west-1
+    region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['creynold-sg']
+    securityGroups: ['new-security-group']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-0392e5b03c16aa118
+    subnetId: subnet-03fcb747f40f11e16
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -74,9 +74,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 90
-    sshUser: ec2-user
+    sshUser: rocky
     volumeType: gp3
-    vpcId: vpc-0b6941a3bdc1f3fda
+    vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userdata: |
@@ -219,20 +219,20 @@ nodepools:
     taints: {}
     quantity: 0
     paused: false
-    ami: ami-0ce8fc041db68907c
+    ami: ami-08f362c39d03a4eb5
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: 'creynold-iam-ip'
+    iamInstanceProfile: ''
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-gov-west-1
+    region: us-east-1
     createSecurityGroup: false
-    securityGroups: ['creynold-sg']
+    securityGroups: ['new-security-group']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-0392e5b03c16aa118
+    subnetId: subnet-03fcb747f40f11e16
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -240,9 +240,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 80
-    sshUser: ec2-user
+    sshUser: rocky
     volumeType: gp3
-    vpcId: vpc-0b6941a3bdc1f3fda
+    vpcId: vpc-0c906d019df325b17
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userdata: |
