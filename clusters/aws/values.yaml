@@ -1,5 +1,5 @@
 cloudprovider: amazonec2
-cloudCredentialSecretName: cc-wwh9b
+cloudCredentialSecretName: awsgovcloud
 
 cluster:
   annotations: {}
@@ -53,20 +53,20 @@ nodepools:
     taints: {}
     quantity: 1
     paused: false
-    ami: ami-08f362c39d03a4eb5
+    ami: ami-0ce8fc041db68907c
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: ''
+    iamInstanceProfile: 'creynold-iam-ip'
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-east-1
+    region: us-gov-west-1
     createSecurityGroup: false
-    securityGroups: ['new-security-group']
+    securityGroups: ['creynold-sg']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-03fcb747f40f11e16
+    subnetId: subnet-0392e5b03c16aa118
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -74,9 +74,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 90
-    sshUser: rocky
+    sshUser: ec2-user
     volumeType: gp3
-    vpcId: vpc-0c906d019df325b17
+    vpcId: vpc-0b6941a3bdc1f3fda
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userdata: |
@@ -219,20 +219,20 @@ nodepools:
     taints: {}
     quantity: 0
     paused: false
-    ami: ami-08f362c39d03a4eb5
+    ami: ami-0ce8fc041db68907c
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
-    iamInstanceProfile: ''
+    iamInstanceProfile: 'creynold-iam-ip'
     insecureTransport: false
     instanceType: t3a.xlarge
-    region: us-east-1
+    region: us-gov-west-1
     createSecurityGroup: false
-    securityGroups: ['new-security-group']
+    securityGroups: ['creynold-sg']
     keypairName: ''
     securityGroupReadonly: false
     sshKeyContents: ''
-    subnetId: subnet-03fcb747f40f11e16
+    subnetId: subnet-0392e5b03c16aa118
     zone: a
     monitoring: false
     privateAddressOnly: false
@@ -240,9 +240,9 @@ nodepools:
     tags: provisioner,rancher,KeepRunning,true
     retries: 5
     rootSize: 80
-    sshUser: rocky
+    sshUser: ec2-user
     volumeType: gp3
-    vpcId: vpc-0c906d019df325b17
+    vpcId: vpc-0b6941a3bdc1f3fda
     useEbsOptimizedInstance: false
     usePrivateAddress: false
     userdata: |
