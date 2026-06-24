@@ -8,7 +8,7 @@ spec:
   clientSecretName: gitfleetsshkey
   insecureSkipTLSVerify: false
   paths:
-    - clusters
+    - clusters/aws
   repo: git@github.com:therealcreynold/public_demo.git
   targets:
     - clusterSelector:
