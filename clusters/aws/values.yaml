@@ -42,7 +42,12 @@ rke:
   localClusterAuthEndpoint:
     enabled: false
 
-registries: {}
+# Carbide needs auth, and this repo is public, so the credentials live in a
+# Secret in the fleet-default namespace rather than inline here.
+registries:
+  configs:
+    registry.ranchercarbide.dev:
+      authConfigSecretName: carbide-registry-auth
 
 nodepools:
   - name: control-plane-nodes
