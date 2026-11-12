@@ -77,10 +77,6 @@ controller:
         termination: passthrough
         tls: null
       type: null
-  image:
-    hash: null
-    repository: rancher/mirrored-neuvector-controller
-    tag: 5.1.1
   ingress:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: HTTPS
@@ -123,10 +119,6 @@ cve:
     affinity: {}
     dockerPath: ''
     enabled: true
-    image:
-      hash: null
-      repository: rancher/mirrored-neuvector-scanner
-      tag: latest
     nodeSelector: {}
     priorityClassName: null
     replicas: 3
@@ -140,10 +132,6 @@ cve:
     tolerations: null
   updater:
     enabled: true
-    image:
-      hash: null
-      repository: rancher/mirrored-neuvector-updater
-      tag: latest
     priorityClassName: null
     runAsUser: null
     schedule: 0 0 * * *
@@ -153,10 +141,6 @@ docker:
   enabled: false
 enforcer:
   enabled: true
-  image:
-    hash: null
-    repository: rancher/mirrored-neuvector-enforcer
-    tag: 5.1.1
   priorityClassName: null
   resources: {}
   tolerations:
@@ -179,10 +163,6 @@ manager:
   enabled: true
   env:
     ssl: true
-  image:
-    hash: null
-    repository: rancher/mirrored-neuvector-manager
-    tag: 5.1.1
   ingress:
     annotations:
       nginx.ingress.kubernetes.io/backend-protocol: HTTPS
