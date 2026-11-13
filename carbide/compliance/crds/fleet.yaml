@@ -1,6 +1,26 @@
 defaultNamespace: compliance-operator-system
 labels:
   carbide-stage: compliance-crds
+
+# The cluster sets a PodSecurity default of enforce=restricted (profile: cis in
+# clusters/aws/values.yaml), and its exemption list names the OLD namespace,
+# cis-operator-system. rancher-compliance moves to compliance-operator-system,
+# which is not exempt, so both the chart's patch-sa hook and the operator itself
+# were rejected outright:
+#   pods "compliance-operator-..." is forbidden: violates PodSecurity
+#   "restricted:latest": allowPrivilegeEscalation != false, unrestricted
+#   capabilities, runAsNonRoot != true, seccompProfile
+# The operator launches sonobuoy host scans, so it genuinely needs privilege --
+# this is the same exemption cis-operator-system always had, not a workaround.
+# Setting it here rather than in the cluster template keeps the change next to
+# what needs it and avoids restarting the API server to reload
+# AdmissionConfiguration. namespaceLabels REPLACES the namespace's labels, so
+# restate name= to keep it.
+namespaceLabels:
+  name: compliance-operator-system
+  pod-security.kubernetes.io/enforce: privileged
+  pod-security.kubernetes.io/audit: privileged
+  pod-security.kubernetes.io/warn: privileged
 helm:
   repo: https://charts.rancher.io
   chart: rancher-compliance-crd
