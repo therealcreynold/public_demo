@@ -35,6 +35,8 @@ spec:
     # The replacement paths are added in the follow-up commit, after Fleet has
     # finished uninstalling the old release -- the CRD group changes from
     # cis.cattle.io to compliance.cattle.io, so the two cannot coexist.
+    - carbide/compliance/crds
+    - carbide/compliance/operator
     - carbide/license
     - gitops/demo-app
     - gitops/essentials

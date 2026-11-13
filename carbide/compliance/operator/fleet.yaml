@@ -1,0 +1,17 @@
+defaultNamespace: compliance-operator-system
+labels:
+  carbide-stage: compliance-operator
+helm:
+  repo: https://charts.rancher.io
+  chart: rancher-compliance
+  version: 110.3.0+up1.5.4
+  releaseName: rancher-compliance
+  valuesFiles:
+    - values.yaml
+
+# Depend on the label, not on a bundle name: Fleet names a bundle
+# "<gitrepo>-<path>", so a hardcoded name only resolves under one GitRepo name.
+dependsOn:
+- selector:
+    matchLabels:
+      carbide-stage: compliance-crds

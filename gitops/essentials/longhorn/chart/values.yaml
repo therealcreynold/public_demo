@@ -1,0 +1,28 @@
+# Longhorn from rancher-charts rather than charts.longhorn.io. The upstream
+# chart pinned every image by hand at longhornio/*:v1.5.1 from docker.io; this
+# build uses the rancher/mirrored-longhornio-* names, all of which Carbide
+# mirrors, so one registry key replaces that whole block.
+global:
+  cattle:
+    systemDefaultRegistry: registry.ranchercarbide.dev
+
+networkPolicies:
+  enabled: false
+  type: "rke2"
+
+service:
+  ui:
+    type: ClusterIP
+  manager:
+    type: ClusterIP
+
+persistence:
+  defaultClass: true
+  defaultFsType: ext4
+  # This is a single-node cluster, so a 3-replica default can never be
+  # satisfied and every volume would sit Degraded.
+  defaultClassReplicaCount: 1
+  reclaimPolicy: Delete
+
+ingress:
+  enabled: false

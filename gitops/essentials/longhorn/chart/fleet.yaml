@@ -1,0 +1,15 @@
+defaultNamespace: longhorn-system
+labels:
+  longhorn-stage: chart
+helm:
+  releaseName: longhorn
+  repo: https://charts.rancher.io
+  chart: longhorn
+  version: 110.1.0+up1.12.1
+  valuesFiles:
+  - values.yaml
+
+dependsOn:
+- selector:
+    matchLabels:
+      longhorn-stage: crds

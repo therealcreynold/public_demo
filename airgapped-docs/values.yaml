@@ -77,3 +77,11 @@ docs:
     image:
       name: "carbide/rancher-desktop-docs"
       # tag: "0.1.1"
+  # Chart 0.1.56 adds this one enabled by default, but it is not a docs image:
+  # neuvector/vdb-explorer serves a NeuVector vulnerability database and exits 1
+  # with "unable to open database file" because nothing mounts a
+  # /var/lib/vuldb/vuldb.sqlite. It has been CrashLoopBackOff on the Rancher
+  # cluster for 181 days for the same reason. One broken pod would hold this
+  # bundle NotReady forever, so leave it off until the chart ships a volume.
+  neuvectorvdbexplorer:
+    enabled: false

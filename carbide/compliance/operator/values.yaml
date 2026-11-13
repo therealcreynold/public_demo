@@ -1,0 +1,6 @@
+# rancher-compliance replaces rancher-cis-benchmark, which stopped at
+# 106.9.0+up8.11.0 (Rancher 2.11). Images come from Carbide, same as the
+# Rancher cluster's own copy of this chart.
+global:
+  cattle:
+    systemDefaultRegistry: registry.ranchercarbide.dev

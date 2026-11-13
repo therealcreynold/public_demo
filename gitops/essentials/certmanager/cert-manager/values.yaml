@@ -152,7 +152,12 @@ volumeMounts: null
 volumes: null
 webhook:
   affinity: {}
-  config: null
+  # Must be {} and not null. The 1.21 chart defaults this to {} and
+  # webhook-rbac.yaml reads (.Values.webhook.config.metricsTLSConfig).dynamic --
+  # the parentheses tolerate a nil metricsTLSConfig but not a nil config, so an
+  # explicit null here fails the render with
+  #   nil pointer evaluating interface {}.metricsTLSConfig
+  config: {}
   containerSecurityContext:
     allowPrivilegeEscalation: false
     capabilities:

@@ -1,0 +1,17 @@
+defaultNamespace: compliance-operator-system
+labels:
+  carbide-stage: compliance-crds
+helm:
+  repo: https://charts.rancher.io
+  chart: rancher-compliance-crd
+  version: 110.3.0+up1.5.4
+  releaseName: rancher-compliance-crd
+
+correctDrift:
+  enabled: false
+diff:
+  comparePatches:
+  - apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    operations:
+    - {"op": "remove", "path": "/status"}
