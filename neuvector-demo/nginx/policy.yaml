@@ -9,7 +9,9 @@ items:
     dlp:
       settings: []
       status: true
-    egress:
+    # Must be an empty array, not null: the CRD schema requires an array and
+    # rejects "null". This only surfaced once the CRDs actually existed.
+    egress: []
     file: []
     ingress: []
     process:
