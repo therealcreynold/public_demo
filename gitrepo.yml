@@ -23,7 +23,15 @@ spec:
   insecureSkipTLSVerify: false
   paths:
     - airgapped-docs
-    - carbide
+    # Leaf directories, not "carbide". A listed path with no fleet.yaml of its
+    # own gets a bundle anyway, and with carbide/stigatron parked that produced
+    # an extra, empty Helm release named public-demo-carbide sitting over the
+    # same files as the three real bundles. Harmless while empty, but with
+    # correctDrift enabled it is the shape that causes "not owned by us".
+    # Re-enabling stigatron means adding carbide/stigatron back here.
+    - carbide/cis-benchmark/crds
+    - carbide/cis-benchmark/operator
+    - carbide/license
     - gitops/demo-app
     - gitops/essentials
     - gitops/neuvector

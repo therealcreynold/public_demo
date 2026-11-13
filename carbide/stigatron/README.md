@@ -22,7 +22,10 @@ rather than left red.
 
 1. Replace `stringData.license` in `../license/license.yaml` with a current key.
 2. `git mv fleet.yaml.disabled fleet.yaml`
-3. Commit and push; Fleet picks it up on the next poll.
+3. Add `carbide/stigatron` to `spec.paths` in `../../gitrepo.yml`, and patch the
+   live GitRepo to match:
+   `kubectl -n fleet-default edit gitrepo public-demo`
+4. Commit and push; Fleet picks it up on the next poll.
 
 `values.yaml` is already correct and needs no changes: it pins the Carbide
 registry plus the three tags Carbide actually mirrors (both operators at 0.4.2,
