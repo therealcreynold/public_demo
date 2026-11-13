@@ -122,7 +122,14 @@ cve:
     nodeSelector: {}
     priorityClassName: null
     replicas: 3
-    resources: {}
+    # The chart ships resources:{} for the scanner. Unbounded, each replica has
+    # been observed ballooning to ~3GB; on the Rancher cluster that drove a node
+    # to 84% RAM and kubelet flapped NodeNotReady every ~45s. Cap memory only --
+    # this node already sits at 75% of its 4 CPU in requests, so adding CPU
+    # requests for 3 replicas would push the scanners to Unschedulable.
+    resources:
+      limits:
+        memory: 3Gi
     runAsUser: null
     strategy:
       rollingUpdate:
@@ -148,9 +155,9 @@ enforcer:
       key: node-role.kubernetes.io/master
 global:
   cattle:
-    systemDefaultRegistry: docker.io
+    systemDefaultRegistry: registry.ranchercarbide.dev
     url: https://rancher.creynold.dev
-  systemDefaultRegistry: docker.io
+  systemDefaultRegistry: registry.ranchercarbide.dev
 k3s:
   enabled: false
   runtimePath: /run/k3s/containerd/containerd.sock
@@ -190,6 +197,6 @@ oem: null
 openshift: false
 psp: false
 rbac: true
-registry: docker.io
+registry: registry.ranchercarbide.dev
 resources: {}
 serviceAccount: neuvector

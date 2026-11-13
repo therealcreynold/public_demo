@@ -4,7 +4,7 @@ labels:
 helm:
   repo: https://charts.rancher.io/
   chart: neuvector
-  version: 109.0.6+up2.11.2
+  version: 110.0.4+up2.11.4
   releaseName: neuvector
   valuesFiles:
     - values.yaml

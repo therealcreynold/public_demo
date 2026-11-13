@@ -63,7 +63,13 @@ image:
   pullPolicy: IfNotPresent
   repository: quay.io/jetstack/cert-manager-controller
 ingressShim: {}
-installCRDs: true
+# installCRDs was deprecated in cert-manager 1.15 in favour of crds.enabled /
+# crds.keep. Still honoured in 1.21 but state the current keys explicitly, and
+# keep the CRDs on uninstall so pruning this bundle cannot delete live
+# Certificate objects.
+crds:
+  enabled: true
+  keep: true
 livenessProbe:
   enabled: false
   failureThreshold: 8
