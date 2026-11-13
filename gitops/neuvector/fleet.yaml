@@ -1,4 +1,6 @@
 defaultNamespace: cattle-neuvector-system
+labels:
+  nv-stage: platform
 helm:
   repo: https://charts.rancher.io/
   chart: neuvector

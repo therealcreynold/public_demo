@@ -1,65 +1,45 @@
+# Bootstrap manifest for the GitRepo that drives this repo's downstream
+# workloads. Apply it by hand (kubectl apply -f gitrepo.yml) -- it is outside
+# spec.paths below, so Fleet does not manage it and cannot fight itself over it.
+#
+# spec.paths is the important part. With no paths Fleet bundles the WHOLE repo,
+# including this file, workloads/*.yaml and kubewarden/.../policies, and ships
+# them to every downstream cluster -- where GitRepo, Amazonec2Config and
+# ClusterAdmissionPolicy CRDs do not exist. That produced a permanently failing
+# root bundle plus a failing clusters-aws bundle. clusters/ belongs to the
+# "clusters" GitRepo in fleet-local (see workloads/clusters.yaml), which is the
+# only place Rancher's provisioning CRDs live.
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
   name: public-demo
-  annotations:
-    {}
-    #  key: string
-  creationTimestamp: '2024-01-11T18:55:02Z'
-  generation: 1
-  labels:
-    {}
-    #  key: string
-  namespace: fleet-local
+  namespace: fleet-default
 spec:
+  repo: git@github.com:therealcreynold/public_demo.git
   branch: main
   clientSecretName: gitfleetsshkey
   correctDrift:
     enabled: true
-#    force: boolean
-#    keepFailHistory: boolean
   insecureSkipTLSVerify: false
   paths:
-#    - string
-  repo: git@github.com:therealcreynold/public_demo.git
+    - airgapped-docs
+    - carbide
+    - gitops/demo-app
+    - gitops/essentials
+    - gitops/neuvector
+    - neuvector-demo
+    - neuvector-policy
   targets:
     - clusterSelector:
         matchExpressions:
+          # Harvester clusters run none of this.
           - key: provider.cattle.io
             operator: NotIn
             values:
               - harvester
-#    - clusterGroup: string
-#      clusterGroupSelector:
-#        matchExpressions:
-#          - key: string
-#            operator: string
-#            values:
-#              - string
-#        matchLabels:  key: string
-#      clusterName: string
-#      clusterSelector:
-#        matchExpressions:
-#          - key: string
-#            operator: string
-#            values:
-#              - string
-#        matchLabels:  key: string
-#      name: string
-#  caBundle: string
-#  forceSyncGeneration: int
-#  helmRepoURLRegex: string
-#  helmSecretName: string
-#  helmSecretNameForPaths: string
-#  imageScanCommit:
-#    authorEmail: string
-#    authorName: string
-#    messageTemplate: string
-#  imageScanInterval: string
-#  keepResources: boolean
-#  paused: boolean
-#  pollingInterval: string
-#  revision: string
-#  serviceAccount: string
-#  targetNamespace: string
-__clone: true
+          # The HPC/Slinky demo clusters get their own stack from
+          # aws-slinky-rke2 and have far too few nodes to also absorb this one.
+          - key: hpc-stack
+            operator: NotIn
+            values:
+              - "true"

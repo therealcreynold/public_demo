@@ -1,1 +1,10 @@
 defaultNamespace: dvwa
+labels:
+  nv-demo-stage: dvwa-policy
+
+# security.yaml carries an NvSecurityRule, whose CRD the NeuVector controller
+# registers at runtime, so wait for the chart.
+dependsOn:
+- selector:
+    matchLabels:
+      nv-stage: platform

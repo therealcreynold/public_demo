@@ -1,1 +1,20 @@
-defaultNamespace: default
+defaultNamespace: nmap
+labels:
+  nv-demo-stage: nmap
+
+# The scanner runs /root/nmap.sh as root and needs raw sockets, so it cannot
+# run under enforce=restricted. It used to deploy into "default", which is
+# shared with other workloads and must keep the cluster's restricted default,
+# so it gets its own exempt namespace instead.
+namespaceLabels:
+  name: nmap
+  pod-security.kubernetes.io/enforce: privileged
+  pod-security.kubernetes.io/audit: privileged
+  pod-security.kubernetes.io/warn: privileged
+
+# policy.yaml carries an NvSecurityRule, whose CRD the NeuVector controller
+# registers at runtime, so wait for the chart.
+dependsOn:
+- selector:
+    matchLabels:
+      nv-stage: platform

@@ -24,6 +24,20 @@ spec:
         image: brooksphilip/rancher-demo-navlink
         ports:
         - containerPort: 8080
+        # The cluster runs the CIS profile, which sets a cluster-wide
+        # PodSecurity default of enforce=restricted. The default namespace is
+        # not on the exemption list, so without this block the ReplicaSet is
+        # rejected outright and the bundle never becomes Ready. This image
+        # serves on 8080 and needs nothing privileged, so it just complies.
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+          seccompProfile:
+            type: RuntimeDefault
 
 ---
 apiVersion: v1

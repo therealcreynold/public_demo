@@ -1,4 +1,6 @@
 defaultNamespace: carbide-stigatron-system
+labels:
+  carbide-stage: stigatron
 helm:
   repo: https://rancherfederal.github.io/carbide-charts
   chart: stigatron
@@ -9,6 +11,11 @@ helm:
   # valuesFiles:
   #   - values.yaml
 
+# Label selectors, for the reason given in cis-benchmark/operator/fleet.yaml.
 dependsOn:
-- name: carbide-public-carbide-cis-benchmark-operator
-- name: carbide-public-carbide-license
+- selector:
+    matchLabels:
+      carbide-stage: cis-operator
+- selector:
+    matchLabels:
+      carbide-stage: license

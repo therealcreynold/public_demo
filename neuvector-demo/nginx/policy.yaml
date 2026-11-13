@@ -3,8 +3,8 @@ items:
 - apiVersion: neuvector.com/v1
   kind: NvSecurityRule
   metadata:
-    name: nv.nmap.default
-    namespace: default
+    name: nv.nmap.nmap
+    namespace: nmap
   spec:
     dlp:
       settings: []
@@ -26,11 +26,11 @@ items:
         criteria:
         - key: service
           op: =
-          value: nmap.default
+          value: nmap.nmap
         - key: domain
           op: =
-          value: default
-        name: nv.nmap.default
+          value: nmap
+        name: nv.nmap.nmap
         original_name: ""
     waf:
       settings: []

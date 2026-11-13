@@ -1,1 +1,14 @@
 defaultNamespace: dvwa
+labels:
+  nv-demo-stage: dvwa-app
+
+# DVWA is a deliberately vulnerable app: Apache binds :80 and MariaDB needs to
+# own /var/lib/mysql, so it cannot satisfy the cluster-wide PodSecurity default
+# of enforce=restricted that the CIS profile sets. Exempt this one namespace
+# instead of weakening the cluster default. namespaceLabels REPLACES the
+# namespace's labels, so name=dvwa is restated here to keep it.
+namespaceLabels:
+  name: dvwa
+  pod-security.kubernetes.io/enforce: privileged
+  pod-security.kubernetes.io/audit: privileged
+  pod-security.kubernetes.io/warn: privileged

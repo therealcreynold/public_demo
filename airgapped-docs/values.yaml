@@ -3,7 +3,12 @@
 # Declare variables to be passed into your templates.
 global:
   cattle:
-    systemDefaultRegistry: "rgcrprod.azurecr.us"
+    # rgcrprod.azurecr.us needs credentials we do not hold, so every docs pod
+    # sat in ImagePullBackOff. All twelve carbide/*-docs images are also in the
+    # Carbide registry, which the nodes already authenticate to through the
+    # carbide-registry-auth secret wired up in clusters/aws/values.yaml, so no
+    # imagePullSecret is needed here.
+    systemDefaultRegistry: "registry.ranchercarbide.dev"
 
 defaults:
   containerPort: 8080

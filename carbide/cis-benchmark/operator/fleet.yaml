@@ -1,4 +1,6 @@
 defaultNamespace: cis-operator-system
+labels:
+  carbide-stage: cis-operator
 helm:
   repo: https://charts.rancher.io
   chart: rancher-cis-benchmark
@@ -7,5 +9,12 @@ helm:
   valuesFiles:
     - values.yaml
 
+# Depend on the label, not on "carbide-public-carbide-cis-benchmark-crds".
+# Fleet names a bundle "<gitrepo>-<path>", so a hardcoded name only resolves
+# when the GitRepo happens to be called carbide-public. The live GitRepo is
+# public-demo, so this dependency could never be satisfied and both this bundle
+# and stigatron behind it sat in ErrApplied.
 dependsOn:
-- name: carbide-public-carbide-cis-benchmark-crds
+- selector:
+    matchLabels:
+      carbide-stage: cis-crds

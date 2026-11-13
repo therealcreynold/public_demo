@@ -1,0 +1,6 @@
+labels:
+  nv-demo-stage: admission
+dependsOn:
+- selector:
+    matchLabels:
+      nv-stage: platform
