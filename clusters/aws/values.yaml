@@ -6,7 +6,7 @@ cluster:
   labels: {fleet-demo: 'true', carbide-public: 'true'}
   name: fleet-downstream-aws
 
-kubernetesVersion: v1.35.9+rke2r1
+kubernetesVersion: v1.36.6+rke2r1
 cni: canal
 profile: cis
 selinux: true
