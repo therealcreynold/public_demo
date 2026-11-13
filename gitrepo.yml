@@ -29,8 +29,12 @@ spec:
     # same files as the three real bundles. Harmless while empty, but with
     # correctDrift enabled it is the shape that causes "not owned by us".
     # Re-enabling stigatron means adding carbide/stigatron back here.
-    - carbide/cis-benchmark/crds
-    - carbide/cis-benchmark/operator
+    #
+    # rancher-cis-benchmark is a dead chart: it stopped at 106.9.0+up8.11.0,
+    # annotated for Rancher 2.11 only, and was renamed rancher-compliance.
+    # The replacement paths are added in the follow-up commit, after Fleet has
+    # finished uninstalling the old release -- the CRD group changes from
+    # cis.cattle.io to compliance.cattle.io, so the two cannot coexist.
     - carbide/license
     - gitops/demo-app
     - gitops/essentials

@@ -1,8 +1,0 @@
-defaultNamespace: cis-operator-system
-labels:
-  carbide-stage: cis-crds
-helm:
-  repo: https://charts.rancher.io
-  chart: rancher-cis-benchmark-crd
-  # version: 3.0.0
-  releaseName: cis-benchmark-crd
