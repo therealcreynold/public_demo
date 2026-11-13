@@ -4,12 +4,12 @@ labels:
 helm:
   repo: https://rancherfederal.github.io/carbide-charts
   chart: stigatron
-  version: 0.1.46
+  version: 0.4.1
   # values:
   #   heimdall2.heimdall.rcidf.tag:  "0.1.2-RC2"
   # releaseName: carbide-charts/stigatron
-  # valuesFiles:
-  #   - values.yaml
+  valuesFiles:
+    - values.yaml
 
 # Label selectors, for the reason given in cis-benchmark/operator/fleet.yaml.
 dependsOn:

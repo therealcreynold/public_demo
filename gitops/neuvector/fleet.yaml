@@ -8,3 +8,26 @@ helm:
   releaseName: neuvector
   valuesFiles:
     - values.yaml
+
+# The GitRepo runs with correctDrift enabled, and NeuVector writes to two of
+# its own manifests at runtime: the controller stamps a cert-upgrader-uid
+# annotation onto the cert-rotation CronJob, and leader election increments
+# leaseTransitions on the controller Lease. Neither is configuration, so
+# without these the bundle flaps between Ready and Modified forever.
+diff:
+  comparePatches:
+  - apiVersion: batch/v1
+    kind: CronJob
+    name: neuvector-cert-upgrader-pod
+    namespace: cattle-neuvector-system
+    operations:
+    - {"op": "remove", "path": "/metadata/annotations/cert-upgrader-uid"}
+  - apiVersion: coordination.k8s.io/v1
+    kind: Lease
+    name: neuvector-controller
+    namespace: cattle-neuvector-system
+    operations:
+    - {"op": "remove", "path": "/spec/leaseTransitions"}
+    - {"op": "remove", "path": "/spec/holderIdentity"}
+    - {"op": "remove", "path": "/spec/acquireTime"}
+    - {"op": "remove", "path": "/spec/renewTime"}
