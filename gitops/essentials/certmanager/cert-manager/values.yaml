@@ -93,10 +93,8 @@ prometheus:
     honorLabels: false
     interval: 60s
     labels: {}
-    path: /metrics
     prometheusInstance: default
     scrapeTimeout: 30s
-    targetPort: 9402
 replicaCount: 1
 resources: {}
 securityContext:
