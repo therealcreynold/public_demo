@@ -58,7 +58,22 @@ nodepools:
     taints: {}
     quantity: 1
     paused: false
-    ami: ami-08f362c39d03a4eb5
+    # Rocky-9-EC2-Base-9.8-20260525.0 (us-east-1). The pin has to be an AMI id --
+    # the Amazonec2Config schema takes nothing else, and Rocky publishes no SSM
+    # parameter to resolve a moving "latest" from. It was ami-08f362c39d03a4eb5,
+    # Rocky 9.3 from November 2023, so every node this pool built arrived five
+    # minor releases behind and had to be patched up by hand afterwards.
+    #
+    # Rocky replaces this image rather than accumulating versions, so one query
+    # returns the current id:
+    #   aws ec2 describe-images --region us-east-1 --owners 679593333241 \
+    #     --filters 'Name=name,Values=Rocky-9-EC2-Base-9.*x86_64*' \
+    #     --query 'reverse(sort_by(Images,&CreationDate))[0].[Name,ImageId]'
+    #
+    # Changing this id replaces the nodes in the pool: Rancher names the
+    # Amazonec2MachineTemplate after a hash of this config, so a new id means a
+    # new template, and CAPI rolls the MachineDeployment onto it.
+    ami: ami-0a5e563b87d8a92e0
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
@@ -224,7 +239,8 @@ nodepools:
     taints: {}
     quantity: 0
     paused: false
-    ami: ami-08f362c39d03a4eb5
+    # Same image as the control-plane pool above; see the note there before editing.
+    ami: ami-0a5e563b87d8a92e0
     deviceName: /dev/sda1
     encryptEbsVolume: false
     endpoint: ''
